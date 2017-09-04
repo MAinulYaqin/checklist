@@ -12,8 +12,11 @@ app.use(bodyParser.urlencoded({
 
 // let db
 
-// app.use('views', join(__dirname + 'view'))
-// app.use('view engine', 'hbs')
+//setup view engine.. !IMPORTANT
+app.set('views', join(__dirname + 'view'))
+app.set('view engine', 'hbs')
+
+
 app.use('/', express.static(__dirname + 'css'))
 
 // then connect to database
@@ -25,7 +28,7 @@ app.use('/', express.static(__dirname + 'css'))
 // })
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/view/index.html')
+    res.render(__dirname + '/view/index.hbs')
 })
 
 app.post('/', (req, res) => {
