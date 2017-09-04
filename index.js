@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const app = epxress()
+const join = require('path').join
 const mongodb = require('mongodb')
 const mongoClient = mongodb.MongoClient
 const PORT = 2017
@@ -10,7 +11,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-app.use('/', express.static(__dirname + '/css'))
+app.use('views', join(__dirname + 'view'))
+app.use('view engine', 'hbs')
+app.use('/', express.static(__dirname + 'css'))
 
 // then connect to database
 mongoClient.connect('mongodb://ainul:insyaallah@ds151963.mlab.com:51963/checklist', (err, resutl) => {
