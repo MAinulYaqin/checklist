@@ -12,21 +12,21 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-let db
-
 //setup view engine.. !IMPORTANT
 app.set('views', join(__dirname + 'view'))
 app.set('view engine', 'hbs')
 
+// setup directory
+app.use('/', express.static(__dirname + '/css'))
 
-app.use('/', express.static(__dirname + 'css'))
 
+let db
 // then connect to database
-mongoClient.connect('mongodb://ainul2:Insyaallah@ds151963.mlab.com:51963/checklist', (err, database) => {
+mongoClient.connect('mongodb://ainul:Insyaallah@ds151963.mlab.com:51963/checklist', (err, database) => {
     if (err) throw err
 
-    db = database
     
+    db = database
     // yang ditaruh di naungan mongod adalah app.listen
     app.listen(PORT, () => {
         console.log('magic happen at port 2017')
@@ -34,9 +34,18 @@ mongoClient.connect('mongodb://ainul2:Insyaallah@ds151963.mlab.com:51963/checkli
 })
 
 app.get('/', (req, res) => {
-    res.render(__dirname + '/view/index.hbs')
+    db.collection('quotes').find()
+
+    res.render(__dirname + '/view/index.hbs', {
+        tambah: req.body
+    })
 })
 
 app.post('/', (req, res) => {
-    console.log(req.body)
+    db.collection('checklist').save(req.body , (err, result) => {
+        if (err) throw err
+
+        res.redirect('/')
+        console.log('save to database')
+    })
 })
