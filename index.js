@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({
 }))
 
 //setup view engine.. !IMPORTANT
-app.set('views', join(__dirname + 'view'))
-app.set('view engine', 'hbs')
+app.set('view engine', 'ejs')
+app.set('views', join(__dirname + '/view'))
 
 // setup directory
 app.use('/', express.static(__dirname + '/css'))
@@ -25,7 +25,7 @@ let db
 mongoClient.connect('mongodb://ainul:Insyaallah@ds151963.mlab.com:51963/checklist', (err, database) => {
     if (err) throw err
 
-    
+
     db = database
     // yang ditaruh di naungan mongod adalah app.listen
     app.listen(PORT, () => {
@@ -34,18 +34,31 @@ mongoClient.connect('mongodb://ainul:Insyaallah@ds151963.mlab.com:51963/checklis
 })
 
 app.get('/', (req, res) => {
-    db.collection('quotes').find()
-
-    res.render(__dirname + '/view/index.hbs', {
-        tambah: req.body
+    db.collection('checklist').find().toArray((err, result) => {
+        if (err) throw err
+        
+        console.log(result)
+        res.render(__dirname + '/view/index.ejs', {
+            quotes: result
+        })
     })
 })
 
-app.post('/', (req, res) => {
-    db.collection('checklist').save(req.body , (err, result) => {
+app.get('/isi', (req, res) => {
+    var cursor = db.collection('checklist').find().toArray((err, result) => {
+        console.log(result)
+    })
+
+    console.log(cursor)
+
+    res.send('wait until i get the problem').send(cursor)
+})
+
+app.post('/quotes', (req, res) => {
+    db.collection('checklist').save(req.body, (err, result) => {
         if (err) throw err
 
         res.redirect('/')
-        console.log('save to database')
+        // console.log('save to database')
     })
 })
