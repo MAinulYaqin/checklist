@@ -22,16 +22,39 @@ ul li {
     list-style: none;
 }
 
+input[type="text"]::-webkit-input-placeholder {
+    color: #f5f5f5;
+    font-weight: 500;
+    text-indent: 0.5em
+}
+
+input[type="text"]::-moz-placeholder {
+    color: #fafafa
+}
+
+input[type="text"]:nth-child(1) {
+    margin-left: 6%
+}
+
+input[type="text"]:nth-child(2) {
+    margin-left: 0.4%
+}
+
 input[type="text"] {
-    color: #fff;
-    margin-left: 6%;
+    text-indent: 0.5em;
+    color: seashell;
     border: 1px solid #2E5CBC;
     font-size: 108%;
     border-radius: 2.3px;
     padding: 3px;
-    width: 45%;
-    background: transparent;
+    width: 19%;
+    background: #2A51A4;
     line-height: 154%;
+}
+
+span.pinterest {
+    float: right;
+    margin-right: 3rem;
 }
 
 .container {
@@ -71,6 +94,7 @@ input[type="text"] {
 .submit>button {
     position: static;
     margin-top: -1px;
+    margin-left: 0.5cm
 }
 
 .btn {
@@ -91,11 +115,20 @@ input[type="text"] {
     border: 1px solid #3367d6;   
 }
 
-.btn.btn-delete {
+.btn.option {
     color: rgba(245, 245, 245, 0.91);
-    background: #F44336;
     border: 1px solid transparent;
     display: block;
+    margin-top: -5px
+}
+
+.btn.btn-delete {
+    background: #F44336;
+    margin-left: 1em
+}
+
+.btn.btn-update {
+    background: #4caf50;
 }
 
 .row {
