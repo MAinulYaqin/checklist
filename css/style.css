@@ -30,7 +30,6 @@ input[type="text"] {
     border-radius: 2.3px;
     padding: 3px;
     width: 45%;
-    /* background: #2A51A4; */
     background: transparent;
     line-height: 154%;
 }
@@ -70,17 +69,42 @@ input[type="text"] {
 }
 
 .submit>button {
-    font-family: Roboto, Ubuntu, Arial, sans-serif;
     position: static;
     margin-top: -1px;
+}
+
+.btn {
+    font-family: Roboto, Ubuntu, Arial, sans-serif;    
     font-size: 106%;
     border-radius: 3px;
-    color: #fafafa;
-    background: #2A51A4;
-    border: 1px  solid #3367d6;
+    color: #263238;
+    background: #F5F5F5;
+    border: 1px solid #9E9E9E;
     padding-top: 6.5px;
     padding-bottom: 6.3px;
-    cursor: pointer;
+    cursor: pointer
+}
+
+.btn.btn-submit {
+    color: #fafafa;
+    background: #2A51A4;
+    border: 1px solid #3367d6;   
+}
+
+.btn.btn-delete {
+    color: rgba(245, 245, 245, 0.91);
+    background: #F44336;
+    border: 1px solid transparent;
+    display: block;
+}
+
+.row {
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.right {
+    float: right
 }
 
 .isi {
