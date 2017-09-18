@@ -2,15 +2,17 @@
   "name": "03.mysql",
   "version": "1.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "mysql.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index"
+    "mongod": "nodemon mongodb",
+    "mysql": "nodemon mysql"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "ejs": "^2.5.7",
     "express": "^4.15.3",
     "hbs": "^4.0.1",
     "mongodb": "^2.2.31",
