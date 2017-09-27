@@ -24,7 +24,7 @@ app.use('/', express.static(__dirname + '/view'))
 
 let db
 // then connect to database
-mongoClient.connect('mongodb://ainul:Insyaallah@ds151963.mlab.com:51963/checklist', (err, database) => {
+mongoClient.connect('mongodb://name:pass@balblabla.mlab.com:number/projectName', (err, database) => {
     if (err) throw err
     // yang ditaruh di naungan mongod adalah app.listen
     db = database
