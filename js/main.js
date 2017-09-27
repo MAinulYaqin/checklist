@@ -1,5 +1,6 @@
 // 'use strict';
 let update = document.getElementById('update')
+let update2 = document.getElementById('update2')
 let name = document.querySelectorAll('.name')
 let del = document.getElementById('delete')
 let form = document.getElementById('form1').classList
@@ -22,14 +23,21 @@ function closestById(el, id) {
     return el;
 }
 
-update.addEventListener('click', (e) => {
-    alert(update.parentNode.id)
-})
-
 // update.addEventListener('click', (e) => {
 //     form.remove('hidden')
 //     form.add('animation')
 // })
+
+update.addEventListener('click', (e) => {
+    fetch('update', {
+        method: 'put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            'name': 'Ainul',
+            'option': 'coba ah :v'
+        })
+    })
+})
 
 del.addEventListener('click', function () {
     fetch('quotes', {

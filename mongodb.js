@@ -24,7 +24,7 @@ app.use('/', express.static(__dirname + '/view'))
 
 let db
 // then connect to database
-mongoClient.connect('mongodb://name:pass@balblabla.mlab.com:number/projectName', (err, database) => {
+mongoClient.connect('mongodb://ainul:Insyaallah@ds151963.mlab.com:51963/checklist', (err, database) => {
     if (err) throw err
     // yang ditaruh di naungan mongod adalah app.listen
     db = database
@@ -33,7 +33,7 @@ mongoClient.connect('mongodb://name:pass@balblabla.mlab.com:number/projectName',
     })
 })
 
-app.get('/quotes', (res) => {res.redirect('/')})
+app.get('/quotes', (req, res) => {res.redirect('/')})
 app.get('/', (req, res) => {
 
     console.log(typeof db.collection('checklist'))
@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 
 // })
 
-app.post('/quotes', (req, res) => {
+app.post('/', (req, res) => {
     db.collection('checklist').save(req.body, (err, result) => {
         if (err) throw err
 
@@ -58,7 +58,7 @@ app.post('/quotes', (req, res) => {
     })
 })
 
-app.put('/quotes', (req, res) => {
+app.put('/update', (req, res) => {
     db.collection('checklist').findOneAndUpdate({
         name: 'Ainul'
     }, {
@@ -76,6 +76,7 @@ app.put('/quotes', (req, res) => {
 
         console.log(result)
     })
+    res.redirect('/')
 })
 
 app.delete('/quotes', (req, res) => {
