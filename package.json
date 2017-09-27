@@ -2,10 +2,11 @@
   "name": "03.mysql",
   "version": "1.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "mysql.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index"
+    "mongodb": "nodemon mongodb",
+    "mysql": "nodemon mysql"
   },
   "author": "",
   "license": "ISC",

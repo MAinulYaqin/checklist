@@ -12,20 +12,55 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="tabel">
-            <div class="heading">
-                <form action="/" method="post">
-                    <div class="head title">Add Something..</div>
-                    <div class="head tambah"><input type="text" name="tambah"></div>
-                    <div class="head submit"><button type="submit">Submit</button></div>
-                </form>
-            </div>
-            <ul>
-                <li class=""> {{ tambah }} </li>
-            </ul>
+    <div id="form1" class="container hidden" style="z-index: 1">
+        <div class="heading" style="background: #4caf50;">
+            <div class=" title">Update</div>
+        </div>
+        <div class="content">
+            <form action="/update" method="post">
+                <div class="row">
+                    <label for="name">Name</label><br>
+                    <input type="text" class="update" autocomplete="off" placeholder="Name" name="name">
+                </div>
+                <div class="row">
+                    <label for="option">Pinterest thing</label><br>
+                    <input type="text" class="update" autocomplete="off" placeholder="Interest Thing" name="option">
+                </div>
+                <div class="head submit">
+                    <button class="right btn btn-update" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
+    <div class="blur">
+        <div class="container">
+            <div class="tabel">
+                <div class="heading">
+                    <form action="" method="post">
+                        <div class="head title">Add Something..</div>
+                        <div class="head">
+                            <input type="text" class="blue" autocomplete="off" placeholder="Name" name="name">
+                            <input type="text" class="blue" autocomplete="off" placeholder="Interest Thing" name="option">
+                        </div>
+                        <div class="head submit">
+                            <button class="btn btn-submit" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <ul>
+                    {{#each items}}
+                    <li class="row">
+                        <span class="name">Name : {{name}} </span>
+                        <button class="btn option btn-delete right" id="delete">Delete</button>
+                        <button class="btn option btn-update right" id="update">Update</button>
+                        <span class="pinterest">Pinterest Things : {{option}} </span>
+                    </li>
+                    <hr> {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="/main.js"></script>
 </body>
 
 </html>

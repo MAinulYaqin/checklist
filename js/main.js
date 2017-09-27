@@ -1,20 +1,35 @@
-'use strict';
+// 'use strict';
 let update = document.getElementById('update')
+let name = document.querySelectorAll('.name')
+let del = document.getElementById('delete')
+let form = document.getElementById('form1').classList
+
+document.onkeyup = function (e) {
+    e = window.event
+    if (e.keyCode === 27) {
+        form.add('hidden')
+        form.remove('animation')
+    }
+}
+
+function closestById(el, id) {
+    while (el.id != id) {
+        el = el.parentNode
+        if (!el){
+            return null;
+        }
+    }
+    return el;
+}
 
 update.addEventListener('click', (e) => {
-    fetch('quotes', {
-        method: 'put',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            'name': 'Ainul',
-            'option': 'Node Js'
-        })
-    })
+    alert(update.parentNode.id)
 })
 
-let del = document.getElementById('delete')
+// update.addEventListener('click', (e) => {
+//     form.remove('hidden')
+//     form.add('animation')
+// })
 
 del.addEventListener('click', function () {
     fetch('quotes', {
@@ -23,7 +38,7 @@ del.addEventListener('click', function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'name': 'Darth Vader'
+                'name': 'Ainul'
             })
         })
         .then(res => {

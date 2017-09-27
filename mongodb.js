@@ -14,13 +14,13 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 //setup view engine.. !IMPORTANT
-app.set('view engine', 'ejs')
+app.set('view engine', 'hbs')
 app.set('views', join(__dirname + '/view'))
 
 // setup directory
 app.use('/', express.static(__dirname + '/css'))
 app.use('/', express.static(__dirname + '/js'))
-
+app.use('/', express.static(__dirname + '/view'))
 
 let db
 // then connect to database
@@ -33,30 +33,28 @@ mongoClient.connect('mongodb://ainul:Insyaallah@ds151963.mlab.com:51963/checklis
     })
 })
 
+app.get('/quotes', (res) => {res.redirect('/')})
 app.get('/', (req, res) => {
+
+    console.log(typeof db.collection('checklist'))
     db.collection('checklist').find().toArray((err, result) => {
         if (err) throw err
         console.log(result)
-        res.render(__dirname + '/view/index.ejs', {
-            quotes: result
+        res.render(__dirname + '/view/index.hbs', {
+            items: result
         })
     })
 })
+// app.get('/update', (req, res) => {
 
-app.get('/isi', (req, res) => {
-    var cursor = db.collection('checklist').find().toArray((err, result) => {
-        console.log(result)
-    })
-    console.log(cursor)
-    res.send('wait until i get the problem').send(cursor)
-})
+// })
 
 app.post('/quotes', (req, res) => {
     db.collection('checklist').save(req.body, (err, result) => {
         if (err) throw err
 
-        // res.redirect('/')
-        // console.log('save to database')
+        res.redirect('/')
+        console.log('save to database')
     })
 })
 
@@ -75,7 +73,7 @@ app.put('/quotes', (req, res) => {
         upsert: true
     }, (err, result) => {
         if (err) return res.send(err)
-        
+
         console.log(result)
     })
 })

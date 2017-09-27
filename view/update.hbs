@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Todo App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="AinulBedjo">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="tabel">
+            <div class="heading">
+                <form action="/quotes" method="post">
+                    <div class="head title">Add Something..</div>
+                    <div class="head tambah"><input type="text" autocomplete="off" placeholder="Name" name="name"><input type="text" autocomplete="off"
+                            placeholder="Interest Thing" name="option"></div>
+                    <div class="head submit"><button class="btn btn-submit" type="submit">Submit</button></div>
+                </form>
+            </div>
+            <ul>
+                {{#each items}}
+                <li class="row">
+                    <span class="name">Name : {{name}} </span>
+                    <button class="btn option btn-delete right" id="delete">Delete</button>
+                    <button class="btn option btn-update right" id="update">Update</button>
+                    <span class="pinterest">Pinterest Things : {{option}} </span>
+                </li>
+                <hr>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <script src="/main.js"></script>
+</body>
+
+</html>
